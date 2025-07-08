@@ -5,15 +5,32 @@ import {useState} from 'react';
 const StatePlayground = () => {
     let initialCount = 0;
   let [state, setState] = useState({
-    count: initialCount
+    count: initialCount,
+    user: "Mayukh",
   });
 
   return (
     < >
+      <h1>{state.user}</h1>
       <h3>Count: {state.count}</h3>
-      <button onClick={() => setState({count:state.count + 1})}>Increment</button>
-      <button onClick={() => setState(prevState => ({count: prevState.count > 0 ? prevState.count - 1 : 0}))}>Decrement</button>
-      <button onClick={() => setState({count: 0})}>Reset</button>
+      <button onClick={() => setState(prevState => {
+        return {
+          ...prevState,
+          count: prevState.count + 1
+        };
+      })}>Increment</button>
+      <button onClick={() => setState(prevState => {
+        return {
+          ...prevState,
+          count: prevState.count > 0 ? prevState.count - 1 : 0
+        };
+        })}>Decrement</button>
+      <button onClick={() => setState(prevState => {
+        return {
+          ...prevState,
+          count: 0
+        };
+        })}>Reset</button>
     </>
   );
 }
