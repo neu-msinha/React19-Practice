@@ -1,15 +1,23 @@
 
-const getTheYear = () => {
-    const newDate = new Date(); 
-    return newDate.getFullYear()
+let styles = {
+    header: {
+        background: '#03a9f4',
+
+    },
+    logo: {
+        color: '#fff',
+        fontFamily: 'Anton',
+        textAlign: 'center'
+    }
 }
 
-// Can use inline return statement or call a function in line 10.
-
-const Header = () => (
-    <div>
-        The date is {getTheYear()}.
-    </div>
-)
+const Header = () => {
+   return (
+    <header style={styles.header}>
+        <h1 style={styles.logo}>My React App</h1>
+        <p style={{ color: '#fff', textAlign: 'center' }}>Welcome to my React application!</p>
+    </header>
+   )
+}
 
 export default Header;
