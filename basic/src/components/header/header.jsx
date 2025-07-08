@@ -3,16 +3,20 @@ import { useState } from 'react';
 
 const Header = () => {
 
+    const[active, setActive] = useState('active');
+    
     const [keywords, setKeywords] = useState('');
 
     // synthetic events in react (onChange, onClick, etc.)
 
    const handleChange = (event) => {
-         setKeywords(event.target.value);
+        const value = event.target.value === '' ? 'active' : 'not-active';
+        setActive(value);
+        setKeywords(event.target.value);
    }
 
    return (
-    <header>
+    <header className={active}>
         <div className="logo">
         Awesome News
         </div>

@@ -82,3 +82,11 @@ nav {
  .not-active {
     background: green;
  }
+
+ .active {
+    background: red;
+ }
+
+ .not-active {
+    background: green;
+ }
