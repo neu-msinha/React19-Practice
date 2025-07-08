@@ -1,18 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import {createRoot} from 'react-dom/client';
+import Header from './components/header';
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello, World!</h1>
-      <p>This is a simple React application.</p>
-    </div>
+    <>
+      <Header />
+    </>
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-root.render(
+createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
