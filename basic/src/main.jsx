@@ -1,15 +1,21 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
+import { useState } from 'react';
 import Header from './components/header/header';
-import StatePlayground from './components/playground/state';
+// import StatePlayground from './components/playground/state';
+import NewsList from './components/news_list';
+import { newsData } from './utils/data';
 import './styles/styles.css';
 
 const App = () => {
+
+  let [news, setNews] = useState(newsData); 
+
   return (
     <>
       <Header />
       <div className='container'>
-        <StatePlayground />
+        <NewsList news={news}/>
       </div>
     </>
   );
