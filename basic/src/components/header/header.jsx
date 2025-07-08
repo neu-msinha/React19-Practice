@@ -1,7 +1,7 @@
 import Navigation from './nav.jsx';
 import { useState } from 'react';
 
-const Header = () => {
+const Header = (props) => {
 
     const[active, setActive] = useState('active');
     
@@ -16,11 +16,11 @@ const Header = () => {
    }
 
    return (
-    <header className={active}>
+    <header>
         <div className="logo">
         Awesome News
         </div>
-        <input onChange={handleChange}/>
+        <input onChange={props.getKeywords}/>
         The keywords are: {keywords}
         <Navigation />
     </header>
