@@ -1,16 +1,19 @@
 import {useState} from 'react';
 
-const StatePlayground = () => {
+//Complex State
 
-  let [count, setCount] = useState(0);
-  console.log(count);
+const StatePlayground = () => {
+    let initialCount = 0;
+  let [state, setState] = useState({
+    count: initialCount
+  });
 
   return (
     < >
-      <h3>Count: {count}</h3>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <button onClick={() => setCount(prevCount => prevCount > 0 ? prevCount - 1 : 0)}>Decrement</button>
-      <button onClick={() => setCount(0)}>Reset</button>
+      <h3>Count: {state.count}</h3>
+      <button onClick={() => setState({count:state.count + 1})}>Increment</button>
+      <button onClick={() => setState(prevState => ({count: prevState.count > 0 ? prevState.count - 1 : 0}))}>Decrement</button>
+      <button onClick={() => setState({count: 0})}>Reset</button>
     </>
   );
 }
