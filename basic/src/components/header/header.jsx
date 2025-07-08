@@ -4,8 +4,6 @@ import { useState } from 'react';
 const Header = (props) => {
 
     const[active, setActive] = useState('active');
-    
-    const [keywords, setKeywords] = useState('');
 
     // synthetic events in react (onChange, onClick, etc.)
 
@@ -21,7 +19,6 @@ const Header = (props) => {
         Awesome News
         </div>
         <input onChange={props.getKeywords}/>
-        The keywords are: {keywords}
         <Navigation />
     </header>
    )

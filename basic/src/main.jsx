@@ -12,7 +12,13 @@ const App = () => {
   let [news, setNews] = useState(newsData); 
 
   const getKeywords = (event) => {
-    console.log(event.target.value);
+    let keywords = event.target.value;
+
+    let filteredNews = newsData.filter(item => {
+      return item.title.toLowerCase().includes(keywords.toLowerCase()) || 
+             item.feed.toLowerCase().includes(keywords.toLowerCase());
+    });
+    setNews(filteredNews);
   };
 
   return (
