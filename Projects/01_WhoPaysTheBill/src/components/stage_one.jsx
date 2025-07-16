@@ -9,7 +9,14 @@ const Stage1 = () => {
     const context = useContext(MyContext); 
 
     const handleSubmit = (e) => {
+        e.preventDefault();
+        const value = textInput.current.value;
 
+        //Validation
+        context.addPlayer(value);
+        textInput.current.value = '';
+
+        console.log(value);
     }
 
     return(
@@ -28,6 +35,24 @@ const Stage1 = () => {
                     <Button className='miami' variant='primary' type='submit'>
                         Add Player
                     </Button>
+
+                    {context.players.length > 0 ?
+                        <>
+                        <hr/>
+                        <div>
+                            <ul className='list-group'> 
+                                {context.players.map((player, index) => (
+                                    <li key={index} className='list-group-item
+                                    d-flex justify-content-between align-items-center list-group-item-action'>
+                                        {player}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        </>
+                        :
+                        null
+                    }
                 </Form.Group>
             </Form>
         </>
