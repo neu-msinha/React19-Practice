@@ -7,16 +7,32 @@ const Stage1 = () => {
 
     const textInput = useRef();
     const context = useContext(MyContext); 
+    const [error, setError] = useState([false, '']);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const value = textInput.current.value;
 
+        const validate = validateInput(value);
+        
         //Validation
-        context.addPlayer(value);
-        textInput.current.value = '';
+        if(validate){
+            setError([false, '']);
+            context.addPlayer(value);
+            textInput.current.value = '';
+        }  
+    }
 
-        console.log(value);
+    const validateInput = (value) => {
+        if(value.trim() === '') {
+            setError([true, 'Please enter a valid name.']);
+            return false;
+        }
+        if(context.players.includes(value)) {
+            setError([true, 'Player already exists.']);
+            return false;
+        }
+        return true;
     }
 
     return(
@@ -30,7 +46,7 @@ const Stage1 = () => {
                         name='player'
                     />
 
-                    {/* ERRORS */}
+                    {error[0] ? <Alert>{error[1]}</Alert>  : null}
 
                     <Button className='miami' variant='primary' type='submit'>
                         Add Player
@@ -45,9 +61,15 @@ const Stage1 = () => {
                                     <li key={index} className='list-group-item
                                     d-flex justify-content-between align-items-center list-group-item-action'>
                                         {player}
+                                        <span className='badge badge-danger'> 
+                                            X
+                                        </span>
                                     </li>
                                 ))}
                             </ul>
+                        </div>
+                        <div className='action_button'>
+                            NEXT
                         </div>
                         </>
                         :
