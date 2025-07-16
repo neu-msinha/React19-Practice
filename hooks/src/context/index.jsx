@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 const MyContext = createContext();
 
@@ -7,8 +7,14 @@ const MyContext = createContext();
 // it can also have functions that can be used to update the data in the context
 const MyProvider = (props) => {
 
+     const [users, setUsers] = useState([
+        {id: 1, name: "Mayukh", age: 21},
+        {id: 2, name: "John", age: 22},
+        {id: 3, name: "Doe", age: 23},
+    ]);
+
     return(
-        <MyContext.Provider>
+        <MyContext.Provider value={users}>
             {props.children}
         </MyContext.Provider>
     )
