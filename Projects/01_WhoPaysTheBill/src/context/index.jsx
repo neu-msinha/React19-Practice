@@ -15,6 +15,12 @@ const MyProvider = (props) => {
         });
     }
 
+    const removePlayerHandler = (name) => {
+        setPlayers((prevPlayers) => {      
+            return prevPlayers.filter(player => player !== name);
+        });
+    }
+
     return(
         <>
             <MyContext.Provider value={{
@@ -25,6 +31,7 @@ const MyProvider = (props) => {
 
                 //METHODS
                 addPlayer: addPlayerHandler,
+                removePlayer: removePlayerHandler,
             }}>
                 {props.children}
             </MyContext.Provider>
