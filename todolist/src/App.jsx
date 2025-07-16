@@ -13,9 +13,10 @@ const App = () => {
 
   return (
     <>
-      <input onChange={getInputValue}></input>
+      <input onChange={getInputValue} value={inputValue}></input>
       <button onClick={() => setListItems(prev => {
                 const newList = { ...prev, [`item${Object.keys(prev).length + 1}`]: `${inputValue}` };
+                setInputValue(""); // Clear input after adding
                 return newList;
               })}>Add</button>
 
