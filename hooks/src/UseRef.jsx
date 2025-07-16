@@ -11,7 +11,7 @@ const UseRefComponent = () => {
     return (
     <>
     <h1>Form:</h1>
-    <input type="text" ref={textInput}/>
+    <InputComponent ref={textInput} />
     <button onClick={triggerHandler}>
         Trigger
     </button>
@@ -19,4 +19,7 @@ const UseRefComponent = () => {
     )
  };
 
+ const InputComponent = (props) => {
+    return <input type="text" ref={props.ref} />
+ }
  export default UseRefComponent;
