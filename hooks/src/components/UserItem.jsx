@@ -23,6 +23,12 @@ const UserItem = () => {
             <button onClick={context.setActive}>
                 {context.activeState ? "Deactivate" : "Activate"}
             </button>
+            <hr />
+            <button onClick={()=>context.addUser("Raghav")}>Add User</button>
+            <hr />
+            <button onClick={()=>context.setUsers((prevUsers) => {
+            return [...prevUsers, {id: prevUsers.length + 1, name: "Shivam", age: 22}];
+             })}>Add User Directly</button>
         </div>
     );
 }       

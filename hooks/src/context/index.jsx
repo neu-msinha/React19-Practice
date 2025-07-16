@@ -14,12 +14,19 @@ const MyProvider = (props) => {
         {id: 3, name: "Doe", age: 23},
     ]);
 
+    const addUser = (name) => {
+        setUsers((prevUsers) => {
+            return [...prevUsers, {id: prevUsers.length + 1, name: name, age: 20}];
+        });
+    }
+
     return(
         <MyContext.Provider value={{
             users: users,
+            addUser: addUser,
+            setUsers: setUsers,
             activeState: active,
-            setActive: () => setActive(!active),
-
+            setActive: () => setActive(!active)
         }}>
             {props.children}
         </MyContext.Provider>
