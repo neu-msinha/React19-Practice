@@ -1,10 +1,11 @@
 import UseEffectComponent from "./UseEffect.jsx";
+import UseRefComponent from "./UseRef.jsx";
 
 const App = () => {
   return (
     
     <>
-      <UseEffectComponent/>
+      <UseRefComponent/>
     </>
   )
 }
