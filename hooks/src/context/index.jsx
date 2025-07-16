@@ -7,6 +7,7 @@ const MyContext = createContext();
 // it can also have functions that can be used to update the data in the context
 const MyProvider = (props) => {
 
+    const [active, setActive] = useState(true);
      const [users, setUsers] = useState([
         {id: 1, name: "Mayukh", age: 21},
         {id: 2, name: "John", age: 22},
@@ -14,7 +15,12 @@ const MyProvider = (props) => {
     ]);
 
     return(
-        <MyContext.Provider value={users}>
+        <MyContext.Provider value={{
+            users: users,
+            activeState: active,
+            setActive: () => setActive(!active),
+
+        }}>
             {props.children}
         </MyContext.Provider>
     )
