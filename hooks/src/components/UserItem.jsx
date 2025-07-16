@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import { useContext, use } from "react";
 import { MyContext } from "../context";
 
 const UserItem = () => {
 
-    const context = useContext(MyContext);
+    const context = use(MyContext);
 
     console.log(context);
 
