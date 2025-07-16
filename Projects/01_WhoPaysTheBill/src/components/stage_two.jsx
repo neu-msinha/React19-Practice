@@ -1,4 +1,4 @@
-const stage2 = () => {
+const Stage2 = () => {
     return(
         <>
             Stage 2
@@ -6,4 +6,4 @@ const stage2 = () => {
     )
 }
 
-export default stage2;
+export default Stage2;

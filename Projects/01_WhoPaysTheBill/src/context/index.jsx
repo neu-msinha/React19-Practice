@@ -3,11 +3,11 @@ import { createContext, useState } from "react";
 const MyContext = createContext();
 
 
-const MyProvider = ({props}) => {
+const MyProvider = (props) => {
 
     const [stage, setStage] = useState(1);
     const [players, setPlayers] = useState([]);
-    cosnt [result, setResult]  = useState('');
+    const [result, setResult]  = useState('');
 
     return(
         <>
