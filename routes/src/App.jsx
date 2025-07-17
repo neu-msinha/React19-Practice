@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Routes, Link} from 'react-router';
 import Home from './components/home.jsx';
 import Posts from './components/posts.jsx';
 import Profile from './components/profile.jsx';
+import PostItem from './components/postItem.jsx';
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='posts' element={<Posts/>}/>
+          <Route path='posts/:postId' element={<PostItem/>}/>
           <Route path='profile' element={<Profile/>}/>
         </Routes>
 
