@@ -12,6 +12,13 @@ import Profile from './components/profile.jsx';
 import PostItem from './components/postItem.jsx';
 import NotFound from './components/404.jsx';
 
+
+//Nested Routes
+
+import Guests from './components/guests.jsx';
+import Users from './components/users.jsx';
+import Admin from './components/admins.jsx';
+
 function App() {
     return (
         <BrowserRouter>
@@ -30,6 +37,7 @@ function App() {
             {/* <li className='nav-item'><Link to="/" className='nav-link'>Home</Link></li> */}
             <li className='nav-item'><Link to="/posts" className='nav-link'>Posts</Link></li>
             <li className='nav-item'><Link to="/profile" className='nav-link'>Profile</Link></li>
+            <li className='nav-item'><Link to="/users" className='nav-link'>Users</Link></li>
           </ul>
         </header>
 
@@ -39,6 +47,13 @@ function App() {
           <Route path='posts' element={<Posts/>}/>
           <Route path='posts/:postId' element={<PostItem/>}/>
           <Route path='profile' element={<Profile/>}/>
+
+          {/* Nested routes */}
+          <Route path='/users' element={<Users/>}>
+            <Route path='guests' element={<Guests/>}/>
+            <Route path='admins' element={<Admin/>}/>
+          </Route>
+
           <Route path='*' element={<NotFound/>}/>
           {/* <Route path='profile' element={
             <Navigate replace to="/"/>  // this will redirect to home page
