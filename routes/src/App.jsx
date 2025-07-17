@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes, Link, NavLink} from 'react-router';
+import {BrowserRouter, Route, Routes, Link, NavLink, Navigate} from 'react-router';
 
 // HashRouter /#/posts
 // MemoryRouter hides the route
@@ -38,6 +38,9 @@ function App() {
           <Route path='posts' element={<Posts/>}/>
           <Route path='posts/:postId' element={<PostItem/>}/>
           <Route path='profile' element={<Profile/>}/>
+          {/* <Route path='profile' element={
+            <Navigate replace to="/"/>  // this will redirect to home page
+          }/> */}
         </Routes>
 
         </div>
