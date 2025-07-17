@@ -1,7 +1,13 @@
+import { useNavigate } from 'react-router';
+
 const Profile = () => {
+
+    let navigate = useNavigate();
+
     return (
         <div>
             <h1>User Profile</h1>
+            <button onClick={() => navigate('/')}>Go to Home</button>
             <p>This is the profile page where you can view and edit your personal information.</p>
         </div>
     );
