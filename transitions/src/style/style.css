@@ -30,6 +30,24 @@
                 CSSTRANSITIONS
 ========================================*/
 
+.cssSq {
+    background: red;
+    height: 100px;
+    transition: all 500ms ease-in;
+}   
+
+.cssSq-enter,
+.cssSq-enter-active,
+.cssSq-enter-done{
+    background: blue;
+}
+
+.cssSq-exit,
+.cssSq-exit-active,
+.cssSq-exit-done{
+    background: green;
+}
+
 
 /*=======================================
                 TRANSITIONS GROUP 
