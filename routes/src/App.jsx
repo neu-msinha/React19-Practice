@@ -1,4 +1,9 @@
-import {BrowserRouter, Route, Routes, Link} from 'react-router';
+import {BrowserRouter, Route, Routes, Link, NavLink} from 'react-router';
+
+// HashRouter /#/posts
+// MemoryRouter hides the route
+
+//NavLink can know when we are at that location (isActive prop)
 
 //Components
 import Home from './components/home.jsx';
@@ -19,7 +24,9 @@ function App() {
           </Link>
 
           <ul className='nav nav-pills'>
-            <li className='nav-item'><Link to="/" className='nav-link'>Home</Link></li>
+            <li className='nav-item'><NavLink to="/" 
+            className={({isActive})=> isActive ? 'nav-link active' : 'nav-link'}>Home</NavLink></li>
+            {/* <li className='nav-item'><Link to="/" className='nav-link'>Home</Link></li> */}
             <li className='nav-item'><Link to="/posts" className='nav-link'>Posts</Link></li>
             <li className='nav-item'><Link to="/profile" className='nav-link'>Profile</Link></li>
           </ul>
