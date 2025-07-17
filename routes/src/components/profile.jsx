@@ -1,8 +1,11 @@
-import { useNavigate } from 'react-router';
+import { useNavigate, useSearchParams } from 'react-router';
 
 const Profile = () => {
 
     let navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+
+    console.log("Search Params:", searchParams.get('profile'));
 
     return (
         <div>
