@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes} from 'react-router';
+import {BrowserRouter, Route, Routes, Link} from 'react-router';
 
 //Components
 import Home from './components/home.jsx';
@@ -11,7 +11,13 @@ function App() {
 
         {/* this will be present all the time */}
         <header>
-          Header
+          <Link to="/">Home</Link><br/>
+          <Link to="/posts">Posts</Link><br/>
+          <Link to={{
+            pathname: '/profile',
+            hash: '#mayukh',
+            search: '?profile=true'
+          }}>Profile</Link><br/>
         </header>
 
         {/* these are the routes */}
