@@ -10,6 +10,7 @@ import Home from './components/home.jsx';
 import Posts from './components/posts.jsx';
 import Profile from './components/profile.jsx';
 import PostItem from './components/postItem.jsx';
+import NotFound from './components/404.jsx';
 
 function App() {
     return (
@@ -38,6 +39,7 @@ function App() {
           <Route path='posts' element={<Posts/>}/>
           <Route path='posts/:postId' element={<PostItem/>}/>
           <Route path='profile' element={<Profile/>}/>
+          <Route path='*' element={<NotFound/>}/>
           {/* <Route path='profile' element={
             <Navigate replace to="/"/>  // this will redirect to home page
           }/> */}
