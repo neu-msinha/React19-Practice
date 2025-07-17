@@ -1,21 +1,36 @@
-import { useState } from 'react';
+import { createRef, useState } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 
 const Tgroup = () => {
-    let [items,setItems] = useState(['24','35','140']);
+    let [items,setItems] = useState([
+        // {number: 67, nodeRef: createRef(null)}
+    ]);
     
     const addElements = () => {
         return items.map((item,i)=>(
-            <div className="item" key={i}>{item}</div>
+            <CSSTransition
+                key={i}
+                nodeRef={item.nodeRef}
+                timeout={500}
+                classNames="item"
+            >
+            <div ref={item.nodeRef} className="item" key={i}>{item.number}</div>
+            </CSSTransition>
         ))
     }
 
     const generateNumber = () => {
-        let newArray = [
-            ...items,
-            Math.floor(Math.random()*100)+1
-        ];
-        setItems(newArray)
+        // let newArray = [
+        //     ...items,
+        //     Math.floor(Math.random()*100)+1
+        // ];
+
+        let newItem = {
+            number: Math.floor(Math.random()*100)+1,
+            nodeRef: createRef(null)
+        }
+        setItems(prev => [...prev, newItem])
     }
 
     const removeNumber= () => {
@@ -26,7 +41,9 @@ const Tgroup = () => {
 
     return(
             <div className="tgroup">
-                {addElements()}
+                <TransitionGroup className="list" component="div">
+                    {addElements()}
+                </TransitionGroup>
              
                 <div className="btns">
                     <button onClick={()=> generateNumber()}>Add Elements</button>
