@@ -23,14 +23,21 @@ const FormThree = () => {
         <div className="container">
             <div className="col-md-12 mt-5">
                 <Formik {...formikProps}>
-                    <Form>
+                    { formik => (
+                        <Form>
                     <label htmlFor="firstname">First name</label>
                     <Field 
                         className="form-control" 
                         type="text" 
                         name="firstname"
                     />
-                    <ErrorMessage name="firstname" component="div" className="text-danger" />
+                    {/* <ErrorMessage name="firstname" component="div" className="text-danger" /> */}
+                    {
+                        formik.errors.firstname && formik.touched.firstname && (
+                            <div className="text-danger">{formik.errors.firstname}</div>
+                        )
+                    }
+                    {/* {formik.values.firstname} */}
                     <hr className="mb-4" />
 
                     <label htmlFor="color">Color</label>
@@ -52,6 +59,8 @@ const FormThree = () => {
                         Submit
                     </button>
                     </Form>
+                    )}
+                    
                 </Formik>
             </div>
         </div>
