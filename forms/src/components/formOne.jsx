@@ -30,7 +30,6 @@ const FormOne = () => {
         } else if (!/^\d{5}(-\d{4})?$/.test(values.zip)) {
           errors.zip = 'Invalid zip code';
         }
-        console.log(errors);
         return errors;
       }}
       onSubmit={(values) => {
@@ -61,7 +60,7 @@ const FormOne = () => {
                 onChange={handleChange}
                 value={values.firstname}
                 />
-                {errors.firstname && (
+                {errors.firstname && touched.firstname && (
                   <div className="text-danger">{errors.firstname}</div>
                 )}
               </div>
@@ -69,6 +68,9 @@ const FormOne = () => {
                 <label htmlFor="lastname">Last name</label>
                 <input type="text" className="form-control" id="lastname" onChange={handleChange}
                 value={values.lastname}/>
+                 {errors.lastname && touched.lastname && (
+                  <div className="text-danger">{errors.lastname}</div>
+                )}
               </div>
             </div>
     
@@ -76,6 +78,9 @@ const FormOne = () => {
               <label htmlFor="email">Email</label>
               <input type="email" className="form-control" id="email" onChange={handleChange}
                 value={values.email} placeholder="you@example.com"/>
+                {errors.email && touched.email && (
+                  <div className="text-danger">{errors.email}</div>
+                )}
             </div>
     
       
@@ -104,6 +109,9 @@ const FormOne = () => {
                 <label htmlFor="zip">Zip</label>
                 <input type="text" className="form-control" id="zip" onChange={handleChange}
                 value={values.zip}/>
+                {errors.zip && touched.zip && (
+                  <div className="text-danger">{errors.zip}</div>
+                )}
               </div>
             </div>
     
