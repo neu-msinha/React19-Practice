@@ -12,6 +12,27 @@ const FormOne = () => {
         state: '',
         zip: ''
       }}
+      validate={(values)=> {
+        const errors = {};
+        if (!values.firstname) {
+          errors.firstname = 'Required';
+        }
+        if (!values.lastname) {
+          errors.lastname = 'Required';
+        }
+        if (!values.email) {
+          errors.email = 'Required';
+        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+          errors.email = 'Invalid email address';
+        }
+        if (!values.zip) {
+          errors.zip = 'Required';
+        } else if (!/^\d{5}(-\d{4})?$/.test(values.zip)) {
+          errors.zip = 'Invalid zip code';
+        }
+        console.log(errors);
+        return errors;
+      }}
       onSubmit={(values) => {
         console.log(values);
       }}
@@ -40,6 +61,9 @@ const FormOne = () => {
                 onChange={handleChange}
                 value={values.firstname}
                 />
+                {errors.firstname && (
+                  <div className="text-danger">{errors.firstname}</div>
+                )}
               </div>
               <div className="col-md-6 mb-3">
                 <label htmlFor="lastname">Last name</label>
