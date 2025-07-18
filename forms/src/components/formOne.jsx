@@ -1,4 +1,5 @@
 import {Form, Formik} from 'formik';
+import * as Yup from 'yup';
 
 const FormOne = () => {
 
@@ -12,26 +13,54 @@ const FormOne = () => {
         state: '',
         zip: ''
       }}
-      validate={(values)=> {
-        const errors = {};
-        if (!values.firstname) {
-          errors.firstname = 'Required';
-        }
-        if (!values.lastname) {
-          errors.lastname = 'Required';
-        }
-        if (!values.email) {
-          errors.email = 'Required';
-        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-          errors.email = 'Invalid email address';
-        }
-        if (!values.zip) {
-          errors.zip = 'Required';
-        } else if (!/^\d{5}(-\d{4})?$/.test(values.zip)) {
-          errors.zip = 'Invalid zip code';
-        }
-        return errors;
-      }}
+      validationSchema={Yup.object({
+        firstname: Yup.string()
+          .max(15, 'Must be 15 characters or less')
+          .required('Required'),
+        lastname: Yup.string()
+          .max(20, 'Must be 20 characters or less')
+          .required('Required'),
+        email: Yup.string()
+          .email('Invalid email address')
+          .required('Required'),
+        zip: Yup.string()
+          .matches(/^\d{5}(-\d{4})?$/, 'Invalid zip code')
+          .required('Required'),
+        country: Yup.string()
+          .oneOf(
+            ['US', 'CA', 'NL'],
+            'Invalid Country'
+          )
+          .required('Required'),
+        state: Yup.string()
+          .oneOf(
+            ['California', 'Toronto', 'Utrech'],
+            'Invalid State'
+          )
+          .required('Required')
+      }
+      )
+      }
+      // validate={(values)=> {
+      //   const errors = {};
+      //   if (!values.firstname) {
+      //     errors.firstname = 'Required';
+      //   }
+      //   if (!values.lastname) {
+      //     errors.lastname = 'Required';
+      //   }
+      //   if (!values.email) {
+      //     errors.email = 'Required';
+      //   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+      //     errors.email = 'Invalid email address';
+      //   }
+      //   if (!values.zip) {
+      //     errors.zip = 'Required';
+      //   } else if (!/^\d{5}(-\d{4})?$/.test(values.zip)) {
+      //     errors.zip = 'Invalid zip code';
+      //   }
+      //   return errors;
+      // }}
       onSubmit={(values) => {
         console.log(values);
       }}
@@ -87,22 +116,31 @@ const FormOne = () => {
             <div className="row">
               <div className="col-md-5 mb-3">
                 <label htmlFor="country">Country</label>
-                <select className="custom-select d-block w-100" id="country" name="country">
+                <select className="custom-select d-block w-100" id="country" onChange={handleChange}
+                value={values.country}>
                   <option value="">Choose...</option>
-                  <option value="US">United States</option>
-                  <option value="CA">Canada</option>
-                  <option value="NL">Netherlands</option>
+                  <option value="US">US</option>
+                  <option value="CA">CA</option>
+                  <option value="NL">NL</option>
                 </select>
+                {errors.country && touched.country && (
+                  <div className="text-danger">{errors.country}</div>
+                )}
               
               </div>
               <div className="col-md-4 mb-3">
                 <label htmlFor="state">State</label>
-                <select className="custom-select d-block w-100" id="state" name="state">
+                <select className="custom-select d-block w-100" id="state" onChange={handleChange}
+                value={values.state}>
                   <option value="">Choose...</option>
-                  <option value="california">California</option>
-                  <option value="toronto">Toronto</option>
-                  <option value="utrech">Utrech</option>
+                  <option value="California">California</option>
+                  <option value="Toronto">Toronto</option>
+                  <option value="Utrech">Utrech</option>
                 </select>
+
+                 {errors.state && touched.state && (
+                  <div className="text-danger">{errors.state}</div>
+                )}
               
               </div>
               <div className="col-md-3 mb-3">
