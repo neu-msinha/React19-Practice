@@ -24,7 +24,7 @@ const App = () => {
         )}
       </ul>
 
-      <button onClick={() => dispatch(addMovie())}>
+      <button onClick={() => dispatch(addMovie({id: movies.length + 1, title: `New Movie ${movies.length + 1}`}))}>
         Add Movie
       </button>
       <p>Click the button to add a new movie.</p>

@@ -17,8 +17,8 @@ export const moviesSlice = createSlice({
 
     // creating an action here that will mutate the data like add or remove movie
 
-    addMovie: (state) => {
-        const newMovie = {id: state.list.length + 1, title: `New Movie ${state.list.length + 1}`};
+    addMovie: (state, action) => {
+        const newMovie = action.payload;
         state.list = [...state.list, newMovie];
     },
 
