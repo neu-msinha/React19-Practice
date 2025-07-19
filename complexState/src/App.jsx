@@ -1,8 +1,10 @@
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux";
+import { addMovie } from "./store/movies";
 
 const App = () => {
 
   const movies = useSelector((state) => state.movies.list);
+  const dispatch = useDispatch();
 
   console.log(movies);
 
@@ -21,6 +23,11 @@ const App = () => {
           ))
         )}
       </ul>
+
+      <button onClick={() => dispatch(addMovie())}>
+        Add Movie
+      </button>
+      <p>Click the button to add a new movie.</p>
     </>
   )
 }

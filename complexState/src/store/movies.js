@@ -14,7 +14,16 @@ export const moviesSlice = createSlice({
   },
   reducers: {
     // Define your reducers here
+
+    // creating an action here that will mutate the data like add or remove movie
+
+    addMovie: (state) => {
+        const newMovie = {id: state.list.length + 1, title: `New Movie ${state.list.length + 1}`};
+        state.list = [...state.list, newMovie];
+    },
+
   }   
 });
 
+export const { addMovie } = moviesSlice.actions;
 export default moviesSlice.reducer;
